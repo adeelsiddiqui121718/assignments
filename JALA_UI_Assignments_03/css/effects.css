@@ -1,0 +1,49 @@
+/* CSS Effects */
+img {
+  box-shadow: 5px 5px 10px gray;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animated-box {
+  animation: fade 2s infinite;
+  width: 200px;
+  height: 100px;
+  background-color: lightcoral;
+  margin: 1rem auto;
+}
+
+.position-static {
+  position: static;
+}
+
+.position-relative {
+  position: relative;
+  top: 10px;
+}
+
+.position-absolute {
+  position: absolute;
+  left: 20px;
+}
+
+.position-fixed {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.position-sticky {
+  position: sticky;
+  top: 0;
+}
+
+.overflow-box {
+  overflow: scroll;
+  width: 200px;
+  height: 80px;
+  border: 1px solid #333;
+}

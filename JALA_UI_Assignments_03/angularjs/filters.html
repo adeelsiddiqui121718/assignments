@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Filters</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="filterCtrl">
+  <h1>AngularJS Filters</h1>
+  <p>{{ text | uppercase }}</p>
+  <p>{{ price | number:2 }}</p>
+  <p>{{ today | date:'fullDate' }}</p>
+
+  <p>Reversed: {{ text | reverse }}</p>
+
+  <p>{{ msg }}</p>
+
+  <script>
+    angular.module('myApp', [])
+      .filter('reverse', function() {
+        return function(input) {
+          if (!input) return input;
+          return input.split('').reverse().join('');
+        };
+      })
+      .controller('filterCtrl', function($scope, $timeout) {
+        $scope.text = 'hello';
+        $scope.price = 1234.567;
+        $scope.today = new Date();
+        $timeout(function() {
+          $scope.msg = 'Updated after 2 seconds';
+        }, 2000);
+      });
+  </script>
+</body>
+</html>

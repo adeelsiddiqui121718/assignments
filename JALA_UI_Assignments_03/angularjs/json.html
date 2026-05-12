@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS JSON</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="jsonCtrl">
+  <h1>AngularJS JSON Data</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in data | orderBy:'name'">
+        <td>{{$index + 1}}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.age }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Select Using ng-options</h2>
+  <select ng-model="selectedItem" ng-options="item.name for item in data"></select>
+  <p>Selected: {{ selectedItem.name }} ({{ selectedItem.age }})</p>
+
+  <script>
+    angular.module('myApp', [])
+      .controller('jsonCtrl', function($scope) {
+        $scope.data = [
+          {name: 'Adeel', age: 25},
+          {name: 'John', age: 30},
+          {name: 'Sara', age: 22}
+        ];
+        $scope.selectedItem = $scope.data[0];
+      });
+  </script>
+</body>
+</html>

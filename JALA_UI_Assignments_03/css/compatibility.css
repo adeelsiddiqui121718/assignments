@@ -1,0 +1,21 @@
+/* CSS Compatibility */
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+ul {
+  list-style-type: square;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.grid-item {
+  background-color: #e8e8e8;
+  padding: 10px;
+}

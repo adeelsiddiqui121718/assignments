@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Events</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="eventCtrl">
+  <h1>AngularJS Events</h1>
+
+  <button ng-disabled="isDisabled" ng-click="clicked=true">Click me</button>
+  <p ng-show="showMsg">This text is visible when showMsg is true.</p>
+  <p>Clicked: {{ clicked }}</p>
+
+  <div ng-mousemove="coords = $event.clientX" style="border:1px solid #333; padding: 10px; margin-top: 1rem;">
+    Move mouse here: X = {{ coords }}
+  </div>
+
+  <script>
+    angular.module('myApp', [])
+      .controller('eventCtrl', function($scope) {
+        $scope.isDisabled = false;
+        $scope.showMsg = true;
+        $scope.clicked = false;
+        $scope.coords = 0;
+      });
+  </script>
+</body>
+</html>

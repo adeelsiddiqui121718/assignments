@@ -1,0 +1,27 @@
+/* CSS Page Adjustments */
+table {
+  border: 1px solid black;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table:hover {
+  background-color: yellow;
+}
+
+.hidden {
+  visibility: hidden; /* space reserved */
+}
+
+.none {
+  display: none; /* no space reserved */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  padding: 20px; /* inside */
+  margin: 20px;  /* outside */
+}

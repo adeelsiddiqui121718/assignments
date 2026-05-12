@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Elements & Validations</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <style>
+    .fade.ng-hide {
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .fade {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+  </style>
+</head>
+<body ng-controller="validationCtrl">
+  <h1>AngularJS Elements & Validations</h1>
+  <form name="myForm" novalidate>
+    <label>
+      Name:
+      <input type="text" name="name" ng-model="user.name" required>
+    </label>
+    <span ng-show="myForm.name.$touched && myForm.name.$invalid">Name is required.</span>
+    <br>
+    <label>
+      Email:
+      <input type="email" name="email" ng-model="user.email" required>
+    </label>
+    <span ng-show="myForm.email.$touched && myForm.email.$invalid">Valid email required.</span>
+    <br>
+    <label>
+      Code:
+      <input type="text" name="code" ng-model="user.code" my-validator required>
+    </label>
+    <span ng-show="myForm.code.$touched && myForm.code.$error.myValidator">Code must equal Adeel.</span>
+    <br>
+    <button type="submit" ng-disabled="myForm.$invalid">Submit</button>
+  </form>
+
+  <div class="fade" ng-show="showBox">This box fades in/out.</div>
+  <button ng-click="showBox = !showBox">Toggle Fade</button>
+
+  <script>
+    angular.module('myApp', [])
+      .directive('myValidator', function() {
+        return {
+          require: 'ngModel',
+          link: function(scope, element, attrs, ctrl) {
+            ctrl.$validators.myValidator = function(value) {
+              return value === 'Adeel';
+            };
+          }
+        };
+      })
+      .controller('validationCtrl', function($scope) {
+        $scope.user = {};
+        $scope.showBox = true;
+      });
+  </script>
+</body>
+</html>

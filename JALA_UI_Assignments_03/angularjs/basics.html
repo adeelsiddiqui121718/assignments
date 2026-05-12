@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Basics</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+  <h1>AngularJS Basics</h1>
+
+  <p>Expression: {{ 5 + 10 }}</p>
+
+  <label>Textbox color:
+    <input type="text" ng-model="color" placeholder="Enter a color">
+  </label>
+  <div ng-style="{'background-color': color, padding: '10px'}">Background uses ng-style</div>
+
+  <p>Message from controller: {{ message }}</p>
+  <p>Global message: {{ globalMsg }}</p>
+
+  <h2>Names</h2>
+  <input ng-model="name" placeholder="Type your name">
+  <p>You typed: {{ name }}</p>
+  <ul>
+    <li ng-repeat="n in names">{{ n }}</li>
+  </ul>
+
+  <script>
+    angular.module('myApp', [])
+      .run(function($rootScope) {
+        $rootScope.globalMsg = 'I am root';
+      })
+      .controller('myCtrl', function($scope) {
+        $scope.message = 'Hello Angular!';
+        $scope.names = ['Adeel', 'John', 'Sara'];
+      });
+  </script>
+</body>
+</html>
